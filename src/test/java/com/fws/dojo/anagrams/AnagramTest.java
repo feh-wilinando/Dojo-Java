@@ -22,6 +22,7 @@ public class AnagramTest {
 		
 		assertThat(1, is(equalTo(lenth)) );
 		assertThat(1, is(equalTo(totalMatchers)) );
+		assertThat(matchers.size(), is(equalTo(1)));
 		assertThat(matchers, containsInAnyOrder("a") );
 		
 		
@@ -40,7 +41,8 @@ public class AnagramTest {
 		
 		assertThat(2, is(equalTo(lenth)) );
 		assertThat(2, is(equalTo(totalMatchers)) );
-		assertThat(matchers, containsInAnyOrder("ab") );
+		assertThat(matchers.size(), is(equalTo(2)) );
+		assertThat(matchers, containsInAnyOrder("ab", "ba") );
 		
 	}
 	
