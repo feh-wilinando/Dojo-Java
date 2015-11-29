@@ -1,9 +1,13 @@
 package com.fws.dojo.anagrams;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Anagram {
 
 	private final String base;
 	private Integer totalMatchers;
+	private List<String> anagrams = new ArrayList<String>();
 
 	public Anagram(String base) {
 		this.base = base;
@@ -23,6 +27,14 @@ public class Anagram {
 
 	public Integer getLength() {
 		return base.length();
+	}
+
+	public List<String> getMatchers() {
+		return anagrams  ;
+	}
+
+	public void generateMatchers() {
+		anagrams.add(base);
 	}
 
 }
