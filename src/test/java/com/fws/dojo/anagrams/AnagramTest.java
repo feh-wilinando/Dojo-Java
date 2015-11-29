@@ -42,7 +42,24 @@ public class AnagramTest {
 		assertThat(2, is(equalTo(totalMatchers)) );
 		assertThat(matchers, containsInAnyOrder("ab") );
 		
+	}
+	
+	
+	@Test
+	public void UmAnagramDeTresLetrasDeveGerarSeisCombinacoes(){
+		Anagram anagram = new Anagram("bio");				
+		Integer totalMatchers = anagram.getTotalMatchers();
+		Integer lenth = anagram.getLength();
 		
+		anagram.generateMatchers();
+		
+		List<String> matchers = anagram.getMatchers();
+		
+		assertThat(3, is(equalTo(lenth)) );
+		assertThat(6, is(equalTo(totalMatchers)) );
+		assertThat(matchers, containsInAnyOrder("bio", "boi", "iob", "ibo", "obi", "oib") );
 		
 	}
+	
+	
 }

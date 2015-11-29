@@ -19,10 +19,15 @@ public class Anagram {
 	}
 	
 	private Integer factor( Integer num ){
+		int factor = 1;
 		
 		if (num <= 2) return num;
 		
-		return null;
+		for (int i = num; i > 1; i--) {
+			factor *= i;
+		}
+		
+		return factor;
 	}
 
 	public Integer getLength() {
