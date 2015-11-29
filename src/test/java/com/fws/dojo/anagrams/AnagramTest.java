@@ -27,4 +27,22 @@ public class AnagramTest {
 		
 	}
 	
+	
+	@Test
+	public void UmAnagramaDeDuasLetrasDeveGerarDuasCombinacoes(){
+		Anagram anagram = new Anagram("ab");				
+		Integer totalMatchers = anagram.getTotalMatchers();
+		Integer lenth = anagram.getLength();
+		
+		anagram.generateMatchers();
+		
+		List<String> matchers = anagram.getMatchers();
+		
+		assertThat(2, is(equalTo(lenth)) );
+		assertThat(2, is(equalTo(totalMatchers)) );
+		assertThat(matchers, containsInAnyOrder("ab") );
+		
+		
+		
+	}
 }
