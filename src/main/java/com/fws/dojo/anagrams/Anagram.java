@@ -55,7 +55,7 @@ public class Anagram {
 			
 			for (int i = 0; i < length; i++) {
 
-				StringBuilder subAnagram = generateAnagramsByIndex(i);
+				StringBuilder subAnagram = generateAnagramsByIndex(this.base,i);
 
 				anagrams.add(subAnagram.toString());
 				anagrams.add(subAnagram.reverse().toString());
@@ -64,7 +64,24 @@ public class Anagram {
 			break;
 		}
 		case 4:{
+			int length = this.base.length();
 			
+			for (int i = 0; i < length; i++) {
+
+				
+				String scrollable = scrollAnagramBaseAtIndex(this.base,  i);
+				char letra = scrollable.charAt(0);
+				String base = scrollable.substring(1);
+				
+				for (int j = 0; j < base.length(); j++) {
+					
+					StringBuilder subAnagram = generateAnagramsByIndex(base,j);
+					anagrams.add(letra + subAnagram.toString());
+					anagrams.add(letra + subAnagram.reverse().toString());
+				}
+				
+
+			}
 			
 			break;
 		}
@@ -74,14 +91,14 @@ public class Anagram {
 		
 	}
 
-	private StringBuilder generateAnagramsByIndex( int index) {
+	private StringBuilder generateAnagramsByIndex( String base, int index ) {
 		int length = base.length();
 		
-		String base = scrollAnagramBaseAtIndex(index);
+		String baseScrollable = scrollAnagramBaseAtIndex(base, index);
 
 		StringBuilder anagram = new StringBuilder();
 		
-		anagram.append(base.charAt(0));			
+		anagram.append(baseScrollable.charAt(0));			
 
 		int contador = 1;
 		
@@ -91,7 +108,7 @@ public class Anagram {
 				contador = 0;
 			}
 			
-			anagram.append(base.charAt(contador++));
+			anagram.append(baseScrollable.charAt(contador++));
 
 		} while (anagram.length() < length);
 		
@@ -99,7 +116,7 @@ public class Anagram {
 	}
 
 	
-	private String scrollAnagramBaseAtIndex( int index ){
+	private String scrollAnagramBaseAtIndex( String base, int index ){
 		String invert = "";
 		int length = base.length();
 		int counter = index+1;

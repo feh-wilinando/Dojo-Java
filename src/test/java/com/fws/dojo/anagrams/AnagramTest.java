@@ -66,4 +66,27 @@ public class AnagramTest {
 
 	
 	
+	
+	@Test
+	public void UmAnagramDeQuareoLetrasDeveGerarVinteEQuatroCombinacoes(){
+		Anagram anagram = new Anagram("biro");				
+		Integer totalMatchers = anagram.getTotalMatchers();
+		Integer lenth = anagram.getLength();
+		
+		anagram.generateMatchers();
+		
+		List<String> matchers = anagram.getMatchers();
+		
+		assertThat(4, is(equalTo(lenth)) );
+		assertThat(24, is(equalTo(totalMatchers)) );
+		assertThat(matchers.size(), is(equalTo(24)) );
+		assertThat(matchers, containsInAnyOrder(	
+													"biro", "bior", "bori", "boir", "broi", "brio",
+													"irob", "irbo", "ibor", "ibro", "iorb", "iobr",
+													"robi", "roib", "ribo", "riob", "rbio", "rboi",
+													"obir", "obri", "orib", "orbi", "oibr", "oirb"
+												) );
+		
+	}
+	
 }
