@@ -59,9 +59,11 @@ public class AnagramTest {
 		
 		assertThat(3, is(equalTo(lenth)) );
 		assertThat(6, is(equalTo(totalMatchers)) );
+		assertThat(matchers.size(), is(equalTo(6)) );
 		assertThat(matchers, containsInAnyOrder("bio", "boi", "iob", "ibo", "obi", "oib") );
 		
 	}
+
 	
 	
 }

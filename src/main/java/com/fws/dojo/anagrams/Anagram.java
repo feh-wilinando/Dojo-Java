@@ -50,36 +50,74 @@ public class Anagram {
 			anagrams.add(base);
 			anagrams.add(new StringBuilder(base).reverse().toString());
 			break;
-		case 3:	
-			int length = base.length();
+		case 3:	{
+			int length = this.base.length();
 			
 			for (int i = 0; i < length; i++) {
-				
-				char letra = base.charAt(i);
-				String restante = ""; 
-				
-				int contador = i+1;
-				
-				do {
-					
-					if (contador == (length) ) {
-						contador = 0;
-					}
-					
-					restante += base.charAt(contador++);
-					
-				} while (contador != i && restante.length() < (length - 1) );
-				
-				anagrams.add(letra + restante);
-				anagrams.add(letra + new StringBuilder(restante).reverse().toString());
+
+				StringBuilder subAnagram = generateAnagramsByIndex(i);
+
+				anagrams.add(subAnagram.toString());
+				anagrams.add(subAnagram.reverse().toString());
 			}
 			
 			break;
+		}
+		case 4:{
 			
+			
+			break;
+		}
 		default:
 			break;
 		}
 		
 	}
 
+	private StringBuilder generateAnagramsByIndex( int index) {
+		int length = base.length();
+		
+		String base = scrollAnagramBaseAtIndex(index);
+
+		StringBuilder anagram = new StringBuilder();
+		
+		anagram.append(base.charAt(0));			
+
+		int contador = 1;
+		
+		do {
+
+			if (contador == (length)) {
+				contador = 0;
+			}
+			
+			anagram.append(base.charAt(contador++));
+
+		} while (anagram.length() < length);
+		
+		return anagram;
+	}
+
+	
+	private String scrollAnagramBaseAtIndex( int index ){
+		String invert = "";
+		int length = base.length();
+		int counter = index+1;
+		
+		invert += base.charAt(index);
+		
+		
+		do {
+			
+			if (counter == (length) ) {
+				counter = 0;
+			}
+			
+			invert += base.charAt(counter++);
+			
+		} while (counter != index && invert.length() < (length) );
+		
+		return invert;
+	}
+	
 }
